@@ -30,9 +30,13 @@
 {
     // Update the user interface for the detail item.
 
-    if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
-    }
+    if (self.detailItem) { NSMutableDictionary *detail = _detailItem;
+        self.nameField.text = [detail objectForKey:@"Name"];
+        self.phoneField.text = [detail objectForKey:@"Phone"];
+        self.emailField.text = [detail objectForKey:@"Email"];
+   }
+    
+//    self.detailDescriptionLabel.text = [self.detailItem description];
 }
 
 - (void)viewDidLoad

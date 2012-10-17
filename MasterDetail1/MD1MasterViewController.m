@@ -30,6 +30,13 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+    
+    _objects = [[NSMutableArray alloc] init];
+    
+    [_objects insertObject:[NSMutableDictionary dictionaryWithDictionary:@{@"Name":@"Angelito Evangelista", @"Phone":@"09998812572", @"E-mail":@"gioevan@me.com"}] atIndex:0];
+    
+    [_objects insertObject: [NSMutableDictionary dictionaryWithDictionary: @{@"Name":@"Juan dela Cruz",@"Phone":@"09175551234",@"Email":@"juan@mintcollege.com"} ]atIndex:0];
+      
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,6 +53,8 @@
     [_objects insertObject:[NSDate date] atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    
 }
 
 #pragma mark - Table View
@@ -64,8 +73,12 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    NSDictionary *object = _objects[indexPath.row];
+    cell.textLabel.text = [object objectForKey:@"Name"];
+    cell.detailTextLabel.text = [object objectForKey:@"Phone"];
+
+//    NSDate *object = _objects[indexPath.row];
+//    cell.textLabel.text = [object description];
     return cell;
 }
 

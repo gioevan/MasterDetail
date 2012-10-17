@@ -8,9 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MD1DetailViewController : UIViewController
+@interface MD1DetailViewController : UITableViewController
 
 @property (strong, nonatomic) id detailItem;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+
+@property (weak, nonatomic) IBOutlet UITextField *nameField;
+
+@property (weak, nonatomic) IBOutlet UITextField *phoneField;
+
+@property (weak, nonatomic) IBOutlet UITextField *emailField;
+
 @end
